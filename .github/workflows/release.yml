@@ -1,0 +1,30 @@
+# Push a tag that matches manifest.json's version (e.g. `git tag 0.5.0 && git push origin 0.5.0`)
+# to create a draft GitHub release with the files Obsidian needs.
+name: Release
+
+on:
+  push:
+    tags:
+      - "*"
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check tag matches manifest version
+        run: |
+          version=$(jq -r .version manifest.json)
+          if [ "$version" != "${GITHUB_REF_NAME}" ]; then
+            echo "Tag ${GITHUB_REF_NAME} does not match manifest.json version $version"
+            exit 1
+          fi
+      - name: Create draft release
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh release create "${GITHUB_REF_NAME}" --title "${GITHUB_REF_NAME}" --draft \
+            main.js manifest.json styles.css
