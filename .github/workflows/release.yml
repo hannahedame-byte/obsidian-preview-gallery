@@ -9,12 +9,14 @@ on:
 
 permissions:
   contents: write
+  id-token: write
+  attestations: write
 
 jobs:
   release:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - name: Check tag matches manifest version
         run: |
           version=$(jq -r .version manifest.json)
@@ -22,6 +24,13 @@ jobs:
             echo "Tag ${GITHUB_REF_NAME} does not match manifest.json version $version"
             exit 1
           fi
+      - name: Attest release files
+        uses: actions/attest@v4
+        with:
+          subject-path: |
+            main.js
+            manifest.json
+            styles.css
       - name: Create draft release
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

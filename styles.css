@@ -119,11 +119,6 @@
   color: var(--text-muted);
 }
 
-.note-gallery-empty {
-  color: var(--text-faint);
-  padding: 24px 0;
-}
-
 .note-gallery-card.is-peeked {
   border-color: var(--interactive-accent);
   box-shadow: 0 0 0 1px var(--interactive-accent);

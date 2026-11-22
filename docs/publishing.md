@@ -1,17 +1,18 @@
 # Publishing checklist
 
-1. Create the public repo `obsidian-preview-gallery` on GitHub and push `main`.
-2. Release: `git tag 0.5.0 && git push origin 0.5.0` → the workflow makes a **draft** release with `main.js`, `manifest.json`, `styles.css`. Review it on GitHub and publish.
-3. Store: fork `obsidianmd/obsidian-releases`, add this to the end of `community-plugins.json`, and open a PR using their template:
+## Each release
 
-```json
-{
-  "id": "preview-gallery",
-  "name": "Preview Gallery",
-  "author": "Hannah",
-  "description": "Notion-style gallery and board views for Bases, with note text previews, side peek, and inline comments.",
-  "repo": "hannahedame-byte/obsidian-preview-gallery"
-}
-```
+1. Bump `version` in `manifest.json`, add it to `versions.json`, commit, and push `main`.
+2. Tag with the same version: `git tag 0.5.1 && git push origin 0.5.1`. The workflow makes a **draft** release with `main.js`, `manifest.json` and `styles.css`.
+3. Add release notes on GitHub and publish the draft.
 
-For each new version: bump `version` in `manifest.json`, add it to `versions.json`, commit, then tag with the same version.
+## Community directory (first time only)
+
+Checked against the Obsidian docs on 2026-11-22: [Submit your plugin](https://docs.obsidian.md/plugins/releasing/submit-plugin).
+
+1. Publish a release whose tag matches `manifest.json` on `main`.
+2. Sign in at [community.obsidian.md](https://community.obsidian.md) with an Obsidian account and link the GitHub account.
+3. Add the plugin there. The review is automatic.
+4. If it reports problems, fix them and publish a new version.
+
+Later releases are picked up from GitHub automatically.

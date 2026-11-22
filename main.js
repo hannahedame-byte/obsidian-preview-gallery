@@ -14,7 +14,7 @@ const COMMENT_HEADER = /^(>\s*\[!comment)(\|resolved)?(\][+-]?)/i;
 // Turn raw markdown into a plain-text preview.
 function toPreviewText(md) {
   return md
-    .replace(/^---\n[\s\S]*?\n---\n?/, "")           // frontmatter
+    .replace(/^---[ \t]*\r?\n(?:[\s\S]*?\n)??---[ \t]*(?:\r?\n|$)/, "") // frontmatter
     .replace(/%%[\s\S]*?%%/g, "")                      // obsidian comments
     .replace(/<!--[\s\S]*?-->/g, "")                   // html comments
     .replace(/^>[ \t]*\[!comment(\|[^\]]*)?\][^\n]*(\n>[^\n]*)*/gim, "") // comment callouts, open or resolved

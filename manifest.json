@@ -1,7 +1,7 @@
 {
   "id": "preview-gallery",
   "name": "Preview Gallery",
-  "version": "0.5.0",
+  "version": "0.5.1",
   "minAppVersion": "1.10.0",
   "description": "Notion-style gallery and board views for Bases, with note text previews, side peek, and inline comments.",
   "author": "Hannah",

@@ -75,9 +75,15 @@ Tip: [Slash Commander](https://github.com/alephpiece/obsidian-slash-commander) c
 - Obsidian **1.10** or newer with the **Bases** core plugin enabled.
 - Works on mobile, except dragging cards between board columns.
 
+## Network use
+
+The plugin sends no data anywhere and needs no account. Its only network use is cover images: if a note's cover is a web link (`https://…`), from its cover property or an image in the note, the card loads that image from the website hosting it. Turn off **Show cover image** to avoid this.
+
 ## Install
 
-Until it's in the community plugin store:
+In Obsidian, open **Settings → Community plugins → Browse**, search for **Preview Gallery**, then install and enable it. Or start from its [directory page](https://community.obsidian.md/plugins/preview-gallery).
+
+### Manual install
 
 1. Download `main.js`, `manifest.json` and `styles.css` from the latest release.
 2. Put them in `<your vault>/.obsidian/plugins/preview-gallery/`.
